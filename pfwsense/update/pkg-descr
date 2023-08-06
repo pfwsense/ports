@@ -1,0 +1,7 @@
+The PFWsense system update utilities provide kernel and base
+upgrades based on signed binary sets as well as packages via
+pkg(8).
+
+An additional bootstrap utility can transform vanilla FreeBSD
+installations into PFWsense in cases where the installation
+media cannot be used.

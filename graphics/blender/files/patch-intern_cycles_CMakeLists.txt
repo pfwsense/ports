@@ -1,0 +1,14 @@
+--- intern/cycles/CMakeLists.txt.orig	2023-02-15 14:56:19 UTC
++++ intern/cycles/CMakeLists.txt
+@@ -377,9 +377,9 @@ endif()
+   add_definitions(-DWITH_CYCLES_DEBUG_NAN)
+ endif()
+ 
+-if(NOT OPENIMAGEIO_PUGIXML_FOUND)
++#if(NOT OPENIMAGEIO_PUGIXML_FOUND)
+   add_definitions(-DWITH_SYSTEM_PUGIXML)
+-endif()
++#endif()
+ 
+ if(CYCLES_STANDALONE_REPOSITORY)
+   include_directories(../third_party/atomic)

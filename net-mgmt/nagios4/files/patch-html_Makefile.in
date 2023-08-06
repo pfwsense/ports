@@ -1,0 +1,14 @@
+--- html/Makefile.in.orig	2023-06-04 10:23:17.547480000 +0200
++++ html/Makefile.in	2023-06-04 10:23:35.365789000 +0200
+@@ -45,11 +45,8 @@ install:
+ 
+ install:
+ 	$(INSTALL) -m 775 $(INSTALL_OPTS) -d $(DESTDIR)$(HTMLDIR)
+-	$(INSTALL) -m 775 $(INSTALL_OPTS) -d $(DESTDIR)$(HTMLDIR)/media
+ 	$(INSTALL) -m 775 $(INSTALL_OPTS) -d $(DESTDIR)$(HTMLDIR)/stylesheets
+ 	$(INSTALL) -m 775 $(INSTALL_OPTS) -d $(DESTDIR)$(HTMLDIR)/contexthelp
+-	$(INSTALL) -m 775 $(INSTALL_OPTS) -d $(DESTDIR)$(HTMLDIR)/docs
+-	$(INSTALL) -m 775 $(INSTALL_OPTS) -d $(DESTDIR)$(HTMLDIR)/docs/images
+ 	$(INSTALL) -m 775 $(INSTALL_OPTS) -d $(DESTDIR)$(HTMLDIR)/js
+ 	$(INSTALL) -m 775 $(INSTALL_OPTS) -d $(DESTDIR)$(HTMLDIR)/images
+ 	$(INSTALL) -m 775 $(INSTALL_OPTS) -d $(DESTDIR)$(HTMLDIR)/images/logos

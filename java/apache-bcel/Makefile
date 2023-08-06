@@ -1,0 +1,32 @@
+PORTNAME=	bcel
+PORTVERSION=	6.4.1
+CATEGORIES=	java devel
+MASTER_SITES=	https://archive.apache.org/dist/commons/${PORTNAME}/binaries/
+PKGNAMEPREFIX=	apache-
+DISTNAME=	${PORTNAME}-${PORTVERSION}-bin
+
+MAINTAINER=	java@FreeBSD.org
+COMMENT=	Apache Commons Byte Code Engineering Library
+WWW=		https://commons.apache.org/proper/commons-bcel/
+
+LICENSE=	APACHE20
+
+NO_BUILD=	yes
+USE_JAVA=	yes
+
+NO_ARCH=	yes
+
+WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}
+PLIST_FILES=	%%JAVAJARDIR%%/bcel.jar
+
+OPTIONS_DEFINE=	DOCS
+
+PORTDOCS=	*
+
+do-install:
+	${INSTALL_DATA} ${WRKSRC}/${PORTNAME}-${PORTVERSION}.jar \
+	    ${STAGEDIR}${JAVAJARDIR}/${PORTNAME}.jar
+	${MKDIR} ${STAGEDIR}${DOCSDIR}
+	(cd ${WRKSRC}/apidocs && ${COPYTREE_SHARE} . ${STAGEDIR}${DOCSDIR} "-not -empty")
+
+.include <bsd.port.mk>

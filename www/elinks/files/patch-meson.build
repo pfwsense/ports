@@ -1,0 +1,31 @@
+--- meson.build.orig	2023-05-01 08:45:22 UTC
++++ meson.build
+@@ -178,6 +178,10 @@ endif
+     conf_data.set('HAVE_FCNTL_H', 1)
+ endif
+ 
++if compiler.has_header('execinfo.h')
++    conf_data.set('HAVE_EXECINFO_H', 1)
++endif
++
+ if compiler.has_header('libgen.h')
+     conf_data.set('HAVE_LIBGEN_H', 1)
+ endif
+@@ -845,7 +849,7 @@ endif
+     conf_data.set('HAVE_ICONV', 1)
+ endif
+ 
+-if conf_data.get('CONFIG_OS_DOS') or compiler.has_function('alloca', prefix: '#include <alloca.h>')
++if conf_data.get('CONFIG_OS_DOS') or compiler.has_function('alloca', prefix: '#include <stdlib.h>')
+     conf_data.set('HAVE_ALLOCA', 1)
+ endif
+ 
+@@ -861,7 +865,7 @@ endif
+     conf_data.set('HAVE_GNUTLS_CERTIFICATE_SET_X509_SYSTEM_TRUST', 1)
+ endif
+ 
+-if compiler.has_function('mkstemps', prefix: '#include <stdlib.h>', args: '-D_GNU_SOURCE')
++if compiler.has_function('mkstemps', prefix: '#include <unistd.h>')
+     conf_data.set('HAVE_MKSTEMPS', 1)
+ endif
+ 

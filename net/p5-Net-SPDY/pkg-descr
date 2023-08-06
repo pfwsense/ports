@@ -1,0 +1,2 @@
+Net::SPDY distribution contains implementation of SPDY protocol. You probably
+want to use Net::SPDY::Session to implement SPDY clients and servers.

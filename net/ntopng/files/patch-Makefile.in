@@ -1,0 +1,21 @@
+--- Makefile.in.orig	2022-07-29 17:15:08 UTC
++++ Makefile.in
+@@ -40,7 +40,8 @@ else ifeq ($(OS), $(filter $(OS), FreeBSD))
+ 	LUA_PLATFORM=macosx
+ else ifeq ($(OS), $(filter $(OS), FreeBSD))
+ 	LUA_PLATFORM=freebsd
+-	LUA_LIB=/usr/local/lib/liblua-5.3.a
++	LUA_INC=-I%%LOCALBASE%%/include/lua54
++	LUA_LIB=-llua-5.4
+ endif
+ 
+ 
+@@ -99,7 +100,7 @@ RPM_DATA_PKG = $(TARGET)-data-$(NTOPNG_VERSION)-@REVIS
+ RPM_DATA_PKG = $(TARGET)-data-$(NTOPNG_VERSION)-@REVISION@.noarch.rpm
+ ######
+ 
+-LIB_TARGETS = $(LUA_LIB)
++# LIB_TARGETS = $(LUA_LIB)
+ 
+ ifneq ($(HAS_ZEROMQ), 0)
+ LIB_TARGETS += $(ZEROMQ_LIB)

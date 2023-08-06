@@ -1,0 +1,7 @@
+TIMESTAMP = 1671494678
+SHA256 (openscad-openscad-2021.01.01-20221206-972d184_GH0.tar.gz) = fc6a33395cdebbe457489d0593548c19abfc53ad15aef771c31e3f84f1615b35
+SIZE (openscad-openscad-2021.01.01-20221206-972d184_GH0.tar.gz) = 23120895
+SHA256 (openscad-MCAD-1ea4022_GH0.tar.gz) = c32e9ebb29b7fff12de408d76258f109b37001740a6f76a2f65b0792e32890d1
+SIZE (openscad-MCAD-1ea4022_GH0.tar.gz) = 56897
+SHA256 (microsoft-mimalloc-fe61be8_GH0.tar.gz) = 3669f0f83e3d904cbef5625be2105cb8438428de2e152740220a7acead1b8800
+SIZE (microsoft-mimalloc-fe61be8_GH0.tar.gz) = 1127821

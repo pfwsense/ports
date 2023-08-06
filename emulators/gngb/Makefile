@@ -1,0 +1,40 @@
+PORTNAME=	gngb
+PORTVERSION=	20060309
+PORTREVISION=	10
+CATEGORIES=	emulators
+MASTER_SITES=	http://m.peponas.free.fr/gngb/download/
+
+MAINTAINER=	ports@FreeBSD.org
+COMMENT=	GameBoy(tm) emulator
+WWW=		http://m.peponas.free.fr/gngb/
+
+LICENSE=	GPLv2+
+LICENSE_FILE=	${WRKSRC}/COPYING
+
+USES=		gmake localbase sdl
+USE_CSTD=	gnu89
+USE_SDL=	sdl
+GNU_CONFIGURE=	yes
+
+PLIST_FILES=	bin/gngb \
+		man/man1/gngb.1.gz
+
+OPTIONS_DEFINE=	OPENGL
+
+OPENGL_USES=		gl
+OPENGL_USE=		GL=gl
+OPENGL_CONFIGURE_ENABLE=gl
+
+.include <bsd.port.pre.mk>
+
+.if ${OPSYS} == FreeBSD && ( ${OSVERSION} >= 1400079 || ( ${OSVERSION} >= 1302505 && ${OSVERSION} < 1400000 ))
+CFLAGS+=	-Wno-error=int-conversion
+.endif
+
+post-patch:
+	@${REINPLACE_CMD} -e \
+		's|"$$SDL_CONFIG" = yes|-n "$$SDL_CONFIG"|g ; \
+		 s|sdl-config |$$SDL_CONFIG |g ; \
+		 s|$$OPT||g' ${WRKSRC}/configure
+
+.include <bsd.port.post.mk>

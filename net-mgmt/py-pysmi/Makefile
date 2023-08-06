@@ -1,0 +1,38 @@
+PORTNAME=	pysmi
+DISTVERSION=	1.1.13
+CATEGORIES=	net-mgmt python
+MASTER_SITES=	PYPI
+PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
+DISTNAME=	${PORTNAME}_lextudio-${PORTVERSION}
+
+MAINTAINER=	john@saltant.com
+COMMENT=	SNMP/SMI MIB parsing in Python
+WWW=		https://www.pysnmp.com/pysmi/
+
+LICENSE=	BSD2CLAUSE
+
+BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}poetry-core>=1.0.0:devel/py-poetry-core@${PY_FLAVOR}
+RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}ply>=3.11:devel/py-ply@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}requests>=2.26.0:www/py-requests@${PY_FLAVOR}
+
+USES=		python
+USE_PYTHON=	autoplist concurrent pep517
+
+NO_ARCH=	yes
+
+OPTIONS_DEFINE=	DOCS EXAMPLES
+
+PORTDOCS=	*
+PORTEXAMPLES=	*
+
+BASEDOCS=	README.md
+
+post-install-DOCS-on:
+	@${MKDIR} ${STAGEDIR}${DOCSDIR}
+	${INSTALL_DATA} ${BASEDOCS:S,^,${WRKSRC}/,} ${STAGEDIR}${DOCSDIR}
+
+post-install-EXAMPLES-on:
+	@${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
+	(cd ${WRKSRC}/examples && ${COPYTREE_SHARE} . ${STAGEDIR}${EXAMPLESDIR})
+
+.include <bsd.port.mk>

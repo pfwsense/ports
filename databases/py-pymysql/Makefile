@@ -1,0 +1,19 @@
+PORTNAME=	pymysql
+PORTVERSION=	1.0.2
+CATEGORIES=	databases python
+MASTER_SITES=	PYPI
+PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
+DISTNAME=	PyMySQL-${PORTVERSION}
+
+MAINTAINER=	lwhsu@FreeBSD.org
+COMMENT=	Pure Python MySQL Driver
+WWW=		https://github.com/PyMySQL/PyMySQL
+
+LICENSE=	MIT
+LICENSE_FILE=	${WRKSRC}/LICENSE
+
+USES=		python
+USE_PYTHON=	autoplist distutils
+NO_ARCH=	yes
+
+.include <bsd.port.mk>

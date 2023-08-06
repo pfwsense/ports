@@ -1,0 +1,34 @@
+--- CMakeLists.txt.orig	2022-04-01 11:53:29 UTC
++++ CMakeLists.txt
+@@ -1,5 +1,18 @@
++cmake_minimum_required(VERSION 3.12)
++
++project(s2-geometry)
++
++find_path(S2_INCLUDE_DIR s2/s2cell.h)
++
++# Should be easy to make it work with swig3, but some args to %pythonprepend
++# seem to be different and were changed.
++find_package(SWIG 4.0)
++# Use Python3_ROOT_DIR to help find python3, if the correct location is not
++# being found by default.
++find_package(Python3 COMPONENTS Interpreter Development)
++
+ include(${SWIG_USE_FILE})
+-include_directories(${Python3_INCLUDE_DIRS})
++include_directories(${S2_INCLUDE_DIR} ${Python3_INCLUDE_DIRS})
+ 
+ set(CMAKE_SWIG_FLAGS "")
+ set_property(SOURCE s2.i PROPERTY SWIG_FLAGS "-module" "pywraps2")
+@@ -13,9 +26,9 @@ add_test(NAME pywraps2_test COMMAND
+          ${Python3_EXECUTABLE}
+          "${PROJECT_SOURCE_DIR}/src/python/pywraps2_test.py")
+ set_property(TEST pywraps2_test PROPERTY ENVIRONMENT
+-             "PYTHONPATH=$ENV{PYTHONPATH}:${PROJECT_BINARY_DIR}/python")
++             "PYTHONPATH=$ENV{PYTHONPATH}:${PROJECT_BINARY_DIR}")
+ 
+ # Install the wrapper.
+ install(TARGETS _pywraps2 DESTINATION ${Python3_SITELIB})
+-install(FILES "${PROJECT_BINARY_DIR}/python/pywraps2.py"
++install(FILES "${PROJECT_BINARY_DIR}/pywraps2.py"
+         DESTINATION ${Python3_SITELIB})

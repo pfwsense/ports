@@ -1,0 +1,4 @@
+MASTERDIR=	${.CURDIR}/../mc
+OPTIONS_EXCLUDE=	X11
+
+.include "${MASTERDIR}/Makefile"

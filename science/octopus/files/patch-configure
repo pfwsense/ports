@@ -1,0 +1,11 @@
+--- configure.orig	2021-11-25 13:43:40 UTC
++++ configure
+@@ -955,7 +955,7 @@ FCFLAGS
+ FCCPP
+ LT_SYS_LIBRARY_PATH
+ CXXCPP'
+-ac_subdirs_all='external_libs/spglib-1.9.9'
++ac_subdirs_all=''
+ 
+ # Initialize some variables set by options.
+ ac_init_help=

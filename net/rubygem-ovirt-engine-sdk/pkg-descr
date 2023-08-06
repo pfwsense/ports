@@ -1,0 +1,3 @@
+The oVirt Ruby SDK is a Ruby gem that simplyfies access to the oVirt Engine API.
+
+See also: https://github.com/oVirt/ovirt-engine-sdk-ruby

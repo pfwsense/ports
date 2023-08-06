@@ -1,0 +1,9 @@
+TIMESTAMP = 1641939106
+SHA256 (jonof-jfsw-20211225-426fc18_GH0.tar.gz) = 35acab2473256e40eeed7da398ed7cf790c05ea9c48013eaa6f5d3f0663ec53a
+SIZE (jonof-jfsw-20211225-426fc18_GH0.tar.gz) = 1058411
+SHA256 (jonof-jfbuild-ab02edc_GH0.tar.gz) = 6429e43443b7e2f2a3df6c47f1e915d4595d56321aafa32f59dbac4126866aac
+SIZE (jonof-jfbuild-ab02edc_GH0.tar.gz) = 1540887
+SHA256 (jonof-jfaudiolib-0e94055_GH0.tar.gz) = 2b53dd0986046fae38f50c05fb16026a050917afc8bac2debce5f0acc54f0f8a
+SIZE (jonof-jfaudiolib-0e94055_GH0.tar.gz) = 1519239
+SHA256 (jonof-jfmact-14340ff_GH0.tar.gz) = e9c8e30f2f5851b308819f651c881183a1eaf9a4067181e281dce56b660bc57f
+SIZE (jonof-jfmact-14340ff_GH0.tar.gz) = 25556

@@ -1,0 +1,8 @@
+libexec/bsdinstall/pfwsense
+libexec/bsdinstall/pfwsense-import
+libexec/bsdinstall/pfwsense-install
+libexec/bsdinstall/pfwsense-reset
+libexec/bsdinstall/pfwsense-rootpass
+libexec/bsdinstall/pfwsense-ufs
+libexec/bsdinstall/pfwsense-zfs
+libexec/bsdinstall/pfwsense.subr

@@ -1,0 +1,6 @@
+@sample etc/binkd.conf-dist etc/binkd.conf
+sbin/binkd
+sbin/binkd-1.1a-115
+share/man/man8/binkd.8.gz
+%%PORTDOCS%%%%DOCSDIR%%/binkdfaq-en.txt
+%%PORTDOCS%%%%DOCSDIR%%/binkdfaq-ru.txt

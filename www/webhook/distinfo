@@ -1,0 +1,5 @@
+TIMESTAMP = 1678298364
+SHA256 (adnanh-webhook-2.8.0_GH0.tar.gz) = c521558083f96bcefef16575a6f3f98ac79c0160fd0073be5e76d6645e068398
+SIZE (adnanh-webhook-2.8.0_GH0.tar.gz) = 1657141
+SHA256 (golang-sys-v0.5.0_GH0.tar.gz) = 810c8f1b7704674971ab6b2b614aba20a5a1765018fd2c639f528dbbcbf88b1f
+SIZE (golang-sys-v0.5.0_GH0.tar.gz) = 1429723

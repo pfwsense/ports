@@ -1,0 +1,18 @@
+@postunexec mv %%PREFIX%%/sbin/pfwsense-bootstrap.bak %%PREFIX%%/sbin/pfwsense-bootstrap
+@preunexec cp %%PREFIX%%/sbin/pfwsense-bootstrap %%PREFIX%%/sbin/pfwsense-bootstrap.bak
+man/man8/pfwsense-bootstrap.8.gz
+man/man8/pfwsense-code.8.gz
+man/man8/pfwsense-fetch.8.gz
+man/man8/pfwsense-patch.8.gz
+man/man8/pfwsense-revert.8.gz
+man/man8/pfwsense-sign.8.gz
+man/man8/pfwsense-update.8.gz
+man/man8/pfwsense-verify.8.gz
+sbin/pfwsense-bootstrap
+sbin/pfwsense-code
+sbin/pfwsense-fetch
+sbin/pfwsense-patch
+sbin/pfwsense-revert
+sbin/pfwsense-sign
+sbin/pfwsense-update
+sbin/pfwsense-verify

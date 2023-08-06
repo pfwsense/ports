@@ -1,0 +1,8 @@
+PORTREVISION=	2
+PKGNAMESUFFIX=	-qt5
+
+MASTERDIR=	${.CURDIR}/../citra
+
+OPTIONS_SLAVE=	QT5
+
+.include "${MASTERDIR}/Makefile"

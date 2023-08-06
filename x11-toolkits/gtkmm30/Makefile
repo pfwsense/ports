@@ -1,0 +1,35 @@
+PORTNAME=	gtkmm
+PORTVERSION=	3.24.2
+PORTREVISION?=	3
+CATEGORIES=	x11-toolkits
+MASTER_SITES=	GNOME
+PKGNAMESUFFIX=	30
+DIST_SUBDIR=	gnome
+
+MAINTAINER=	gnome@FreeBSD.org
+COMMENT=	C++ wrapper for Gtk+3
+WWW=		http://gtkmm.sourceforge.net/
+
+LICENSE=	LGPL21
+
+USES+=		tar:xz
+
+PORTSCOUT=	limitw:1,even
+
+USES+=		gettext gmake gnome libtool pathfix pkgconfig \
+		compiler:c++11-lang
+USE_CXXSTD=	c++11
+USE_GNOME=	gdkpixbuf2 gtk30 glibmm cairomm atkmm pangomm
+GNU_CONFIGURE=	yes
+USE_LDCONFIG=	yes
+CONFIGURE_ARGS=	--disable-documentation
+INSTALL_TARGET=	install-strip
+BINARY_WRAPPERS=	gm4
+
+PLIST_SUB=	API_VERSION="3.0"
+
+post-patch:
+	@${REINPLACE_CMD} -e '/^SUBDIRS =/s/tests//' \
+		${WRKSRC}/Makefile.in
+
+.include <bsd.port.mk>

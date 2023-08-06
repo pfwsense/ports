@@ -1,0 +1,10 @@
+#!/bin/sh
+
+if [ "$(id -u)" != "0" ]; then
+	echo "$0 must be run as root" 1>&2
+	exit 1
+fi
+
+export JAVA_VERSION=17
+cd %%PREFIX%%/minecraft-server
+su -m mcserver -c "%%LOCALBASE%%/bin/java $(cat %%PREFIX%%/etc/minecraft-server/java-args.txt) -jar server.jar nogui"

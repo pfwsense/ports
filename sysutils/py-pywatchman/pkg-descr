@@ -1,0 +1,2 @@
+Watchman exists to watch files and record when they actually change.
+It can also trigger actions when matching files change.

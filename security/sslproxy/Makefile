@@ -1,0 +1,32 @@
+PORTNAME=	sslproxy
+PORTVERSION=	0.9.4
+DISTVERSIONPREFIX=	v
+PORTEPOCH=	1
+CATEGORIES=	security
+
+MAINTAINER=	bofh@FreeBSD.org
+COMMENT=	Transparent and scalable SSL/TLS interception
+WWW=		https://github.com/sonertari/SSLproxy
+
+LICENSE=	BSD2CLAUSE
+
+LIB_DEPENDS=	libevent.so:devel/libevent \
+		libnet.so:net/libnet
+
+USES=		gmake pkgconfig uidfix sqlite ssl
+USE_GITHUB=	yes
+GH_ACCOUNT=	sonertari
+GH_PROJECT=	SSLproxy
+
+MAKEFILE=	GNUmakefile
+MAKE_ENV=	MANDIR=man INSTALLUID=${UID} INSTALLGID=${GID}
+PLIST_FILES=	bin/sslproxy man/man1/sslproxy.1.gz \
+		man/man5/sslproxy.conf.5.gz \
+		"@sample etc/sslproxy.conf.sample"
+
+post-patch:
+	@${REINPLACE_CMD} -e \
+		's|^EXAMPLESDIR.*|EXAMPLESDIR?=	etc|g' \
+			${WRKSRC}/Mk/main.mk
+
+.include <bsd.port.mk>

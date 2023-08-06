@@ -1,0 +1,62 @@
+PORTNAME=	groff
+PORTVERSION=	1.22.4
+PORTREVISION=	4
+CATEGORIES=	textproc
+MASTER_SITES=	GNU
+
+MAINTAINER=	bapt@FreeBSD.org
+COMMENT=	Software typesetting package
+WWW=		https://www.gnu.org/software/groff/
+
+LICENSE=	GPLv3
+
+BUILD_DEPENDS=	psselect:print/psutils \
+		gsfonts>=0:print/gsfonts
+RUN_DEPENDS:=	psselect:print/psutils
+
+MAKE_JOBS_UNSAFE=	yes
+
+USES=		cpe gmake iconv:wchar_t perl5 makeinfo
+USE_CXXSTD=	gnu++98
+GNU_CONFIGURE=	yes
+CONFIGURE_ARGS+=	--with-urw-fonts-dir=${LOCALBASE}/share/ghostscript/fonts/ \
+			--with-awk=/usr/bin/awk \
+			--without-x \
+			--without-gs \
+			pnmcrop=missing \
+			pnmcut=missing \
+			pnmtopng=missing \
+			pnmtops=missing \
+			psselect=missing
+
+CPE_VENDOR=	gnu
+
+# Canonicalize to A4 if set.
+.if defined(A4) || (defined(PAPERSIZE) && ${PAPERSIZE:tu} == "A4")
+PAPERSIZE=A4
+.endif
+.if defined(PAPERSIZE)
+CONFIGURE_ENV+=	PAGE=${PAPERSIZE}
+.endif
+
+CONFLICTS=	heirloom-doctools ja-groff
+
+INFO=	groff
+
+DATADIR=	${PREFIX}/share/${PORTNAME}/${PORTVERSION}
+DOCSDIR=	${PREFIX}/share/doc/${PORTNAME}-${PORTVERSION}
+EXAMPLESDIR=	${DOCSDIR}/examples
+
+OPTIONS_DEFINE=	UCHARDET
+OPTIONS_DEFAULT=	UCHARDET
+
+UCHARDET_DESC=	Automatic encoding detection in preconv(1)
+UCHARDET_LIB_DEPENDS=	libuchardet.so:textproc/uchardet
+UCHARDET_USES=	pkgconfig
+UCHARDET_CONFIGURE_OFF=	--with-uchardet=no
+
+post-install:
+	${INSTALL_DATA} ${FILESDIR}/mdoc.local ${STAGEDIR}${PREFIX}/share/groff/site-tmac
+	${REINPLACE_CMD} -i "" -e "s/missing/gs/" ${STAGEDIR}${DATADIR}/font/devhtml/DESC
+
+.include <bsd.port.mk>

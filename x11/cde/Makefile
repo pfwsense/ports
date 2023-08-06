@@ -1,0 +1,6 @@
+VERSIONS=		24 25
+CDE_VERSION?=		25
+
+MASTERDIR=		${.CURDIR}/../cde-${CDE_VERSION}
+
+.include "${MASTERDIR}/Makefile"

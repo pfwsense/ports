@@ -1,0 +1,19 @@
+--- CMakeLists.txt.orig	2022-08-29 12:04:45 UTC
++++ CMakeLists.txt
+@@ -483,6 +483,7 @@ IF(NOT LCB_NO_TOOLS)
+ ENDIF()
+ 
+ IF(NOT LCB_NO_TOOLS)
++    set(CMAKE_INSTALL_MANDIR "man")
+     INSTALL(DIRECTORY doc/man/ DESTINATION ${CMAKE_INSTALL_MANDIR}/man1 FILES_MATCHING PATTERN *.1)
+     INSTALL(DIRECTORY doc/man/ DESTINATION ${CMAKE_INSTALL_MANDIR}/man4  FILES_MATCHING PATTERN *.4)
+ ENDIF()
+@@ -502,7 +503,7 @@ IF(NOT WIN32 AND LCB_INSTALL_PKGCONFIG)
+ # pkg-config stuff goes with installation
+ IF(NOT WIN32 AND LCB_INSTALL_PKGCONFIG)
+     CONFIGURE_FILE(packaging/libcouchbase.pc.in packaging/libcouchbase.pc @ONLY)
+-    INSTALL(FILES ${PROJECT_BINARY_DIR}/packaging/libcouchbase.pc DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
++    INSTALL(FILES ${PROJECT_BINARY_DIR}/packaging/libcouchbase.pc DESTINATION ${CMAKE_INSTALL_LIBDIR}data/pkgconfig)
+ ENDIF()
+ 
+ 

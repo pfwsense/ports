@@ -1,0 +1,16 @@
+--- CMakeLists.txt.orig	2023-02-08 14:06:47 UTC
++++ CMakeLists.txt
+@@ -167,11 +167,11 @@ endif ()
+ 
+ add_library(rhonabwy SHARED ${LIB_SRC})
+ set_target_properties(rhonabwy PROPERTIES
+-        COMPILE_OPTIONS "-Wextra;-Wconversion"
++        COMPILE_OPTIONS "-Wextra;-Wconversion;-Wno-sign-conversion;-Wno-unknown-warning-option"
+         PUBLIC_HEADER "${INC_DIR}/rhonabwy.h;${PROJECT_BINARY_DIR}/rhonabwy-cfg.h"
+         VERSION "${LIBRARY_VERSION}"
+         SOVERSION "${LIBRARY_SOVERSION}")
+-target_link_libraries(rhonabwy ${LIBS})
++target_link_libraries(rhonabwy ${LIBS} -L${CMAKE_INSTALL_PREFIX}/lib -lgmp)
+ 
+ set(SEARCH_ORCANIA OFF CACHE BOOL "Force to false") # Avoid to search and download orcania during yder search and download
+ set(SEARCH_ORCANIA_U OFF CACHE BOOL "Force to false") # Avoid to search and download orcania during ulfius search and download

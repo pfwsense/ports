@@ -1,0 +1,32 @@
+PORTNAME=	pdfminer.six
+PORTVERSION=	20220319
+CATEGORIES=	textproc python
+MASTER_SITES=	PYPI
+PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
+
+MAINTAINER=	kai@FreeBSD.org
+COMMENT=	PDF parser and analyzer
+WWW=		https://github.com/pdfminer/pdfminer.six
+
+LICENSE=	MIT
+LICENSE_FILE=	${WRKSRC}/LICENSE
+
+RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}chardet>=0:textproc/py-chardet@${PY_FLAVOR}
+
+USES=		python pycryptography:run
+USE_PYTHON=	distutils concurrent autoplist
+
+CONFLICTS_INSTALL=	py??-pdfminer py??-pdfminer3k
+NO_ARCH=		yes
+
+OPTIONS_DEFINE=		IMAGE
+OPTIONS_DEFAULT=	IMAGE
+
+IMAGE_DESC=	Enable support for image extraction
+IMAGE_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}pillow>0:graphics/py-pillow@${PY_FLAVOR}
+
+post-extract:
+	@cd ${WRKSRC} && ${MV} tools/dumppdf.py tools/dumppdf
+	@cd ${WRKSRC} && ${MV} tools/pdf2txt.py tools/pdf2txt
+
+.include <bsd.port.mk>
